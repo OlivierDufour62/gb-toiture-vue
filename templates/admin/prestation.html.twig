@@ -1,0 +1,101 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block title %}Prestation
+{% endblock %}
+{% block h1 %}Prestation
+{% endblock %}
+
+{% block content %}
+	<div class="col-6 mx-auto bg text-white successsend d-none bg-success">
+		<p>Catégorie enregistrer</p>
+	</div>
+	<div class="col-6 mx-auto d-flex justify-content-center">
+		<h2 class="color264d7e titlesizemobile">Catégorie</h2>
+	</div>
+	<div class="table-responsive col-12 col-lg-12 col-xl-8 mx-auto w100 p-0 m-0">
+		<table class="table table-striped table-dark text-center">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col">Éditer</th>
+					<th scope="col">Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for categories in category %}
+					{% if categories.isActive == true %}
+
+						<tr>
+							<th scope="row">{{categories.id}}</th>
+							<th scope="row">{{categories.name|capitalize}}</th>
+							<td>
+								<a href="/admin/editcategory/{{categories.id}}" class="editcat">
+									<i class="ri-arrow-right-line text-white"></i>
+								</a>
+							</td>
+							<td>
+								<div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input categoryswitches" categoryswitches="{{categories.id}}" id="customSwitch{{categories.id}}" {% if categories.isActive %} checked {% endif %}>
+									<label class="custom-control-label" for="customSwitch{{categories.id}}"></label>
+								</div>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="d-flex justify-content-end mx-auto col-12 col-lg-12 col-xl-8 mb-5 p-0 m-0">
+		<button class="btn text-white btn264d7e shadow-none addcat">Ajouter une catégorie</button>
+		{# <a class="btn text-white btn264d7e" href="/admin/addprestation">Ajouter une catégorie</a> #}
+	</div>
+	<div class="col-9 mx-auto p-0 m-0">
+		<div class="div-none col-12 mx-auto mb-3">
+			{{ form_start(form, {'attr': {'class': 'col-6 mx-auto ajaxaddcategory'}})}}
+			{{ form_widget(form.name, {'attr': {'class': 'form-control shadow-none mb-3','placeholder': 'Nom'}})}}
+			<button type="submit" id="addcategory" class="text-white btn264d7e shadow-none addcat btn">Ajouter</button>
+			{{ form_end(form) }}
+		</div>
+	</div>
+	<div class="table-responsive col-12 col-lg-12 col-xl-12  p-0 m-0">
+		<table class="table table-striped table-dark text-center">
+			<thead>
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">Catégorie</th>
+					<th scope="col">Type</th>
+					<th scope="col">Tarif</th>
+					<th scope="col">Éditer</th>
+					<th scope="col">Supprimer</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for services in allService %}
+					{% if services.isActive == true %}
+						<tr>
+							<th scope="row">{{services.id}}</th>
+							<th scope="row">{{services.category.name|capitalize}}</th>
+							<td>{{services.name|capitalize}}</td>
+							<td>{{services.rate}}</td>
+							<td>
+								<a href="/admin/editservice/{{services.id}}" class=" editcat">
+									<i class="ri-arrow-right-line text-white"></i>
+								</a>
+							</td>
+							<td>
+								<div class="custom-control custom-switch">
+									<input type="checkbox" class="custom-control-input serviceswitches" serviceswitches="{{services.id}}" id="serviceSwitches{{services.id}}" {% if services.isActive %} checked {% endif %}>
+									<label class="custom-control-label" for="serviceSwitches{{services.id}}"></label>
+								</div>
+							</td>
+						</tr>
+					{% endif %}
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	<div class="d-flex justify-content-end col-12 col-lg-12 col-xl-12 p-0 m-0">
+		<a class="btn text-white btn264d7e" href="/admin/addservice">Ajouter une prestation</a>
+	</div>
+{% endblock %}

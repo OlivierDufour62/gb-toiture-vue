@@ -1,0 +1,73 @@
+.bord {
+    border: 1px solid black !important;
+    border-collapse: collapse;
+}
+
+td{
+    border-left: 1px solid black !important;
+    border-collapse: collapse;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.width-table1 {
+    width: 250px;
+}
+
+.width-table-title {
+    width: 610px;
+}
+
+.width-table-libelle {
+    width: 500px;
+}
+
+.width-table-qupt {
+    width: 80px;
+}
+
+.width-table-unite {
+    width: 50px;
+}
+
+.width-table-qpt {
+    width: 200px;
+}
+
+.address {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    /* -webkit-box-pack: center; /* wkhtmltopdf uses this one */
+    /*-webkit-justify-content: center;
+    justify-content: center; */
+    position: relative;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.address-client{
+    position: absolute;
+    top:0; 
+    left: 650px;
+}
+
+.textdark {
+    color: #3f3f3f;
+}
+
+.title{
+    position: relative;
+}
+
+.date{
+    position: absolute;
+    top: 0;
+    left: 650px;
+}
+
+#center td{
+    text-align: center;
+}
